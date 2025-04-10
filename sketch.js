@@ -31,13 +31,13 @@ function setup() {
     createCanvas(600, 600, WEBGL);
 
     // Create sliders with default value set to 50 degrees (≈ 0.87 radians)
-    rotX = createSlider(0, TWO_PI, radians(50), 0.01);
+    rotX = createSlider(0, TWO_PI, radians(236), 0.01);
     rotX.position(10, height + 10);
 
     rotY = createSlider(0, TWO_PI, radians(50), 0.01);
     rotY.position(10, height + 40);
 
-    rotZ = createSlider(0, TWO_PI, radians(50), 0.01);
+    rotZ = createSlider(0, TWO_PI, radians(191), 0.01);
     rotZ.position(10, height + 70);
 
     // Create text elements for rotation degrees
