@@ -28,7 +28,7 @@ function preload() {
 
 
 function setup() {
-    createCanvas(700, 700, WEBGL);
+    createCanvas(600, 600, WEBGL);
 
     // Create sliders with default value set to 50 degrees (≈ 0.87 radians)
     rotX = createSlider(0, TWO_PI, radians(50), 0.01);
