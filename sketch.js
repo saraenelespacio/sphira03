@@ -1,3 +1,20 @@
+let bgColorSelector;
+let selectedBgColor = '#ffffff'; // default
+
+let bgColors = {
+'White': '#ffffff',
+  'Persian blue': '#032461',
+  'Royal blue': '#0b31b7',
+  'Lapis lazuli': '#2066a0',
+  'Fawn': '#f8b583',
+  'Linen': '#f2e6db',
+  'Black': '#000000',
+  'Sphira white': '#eeeeee',
+  'Sphira black': '#161616',
+  'Cream': '#f2f2e2'
+};
+
+
 let logo;
 let hauoraFont;
 let rotX, rotY, rotZ;
@@ -30,14 +47,17 @@ function preload() {
 function setup() {
     createCanvas(600, 600, WEBGL);
 
+ 
+
+
     // Create sliders with default value set to 50 degrees (≈ 0.87 radians)
-    rotX = createSlider(0, TWO_PI, radians(236), 0.01);
+    rotX = createSlider(0, TWO_PI, radians(0), 0.01);
     rotX.position(10, height + 10);
 
-    rotY = createSlider(0, TWO_PI, radians(50), 0.01);
+    rotY = createSlider(0, TWO_PI, radians(260), 0.01);
     rotY.position(10, height + 40);
 
-    rotZ = createSlider(0, TWO_PI, radians(191), 0.01);
+    rotZ = createSlider(0, TWO_PI, radians(210), 0.01);
     rotZ.position(10, height + 70);
 
     // Create text elements for rotation degrees
@@ -67,11 +87,24 @@ function setup() {
     // Create save button
     saveButton = createButton('Save Image');
     saveButton.position(10, height + 160);
-    saveButton.mousePressed(() => saveCanvas('3D_Model', 'png'));
-}
+    saveButton.mousePressed(() => saveCanvas('Sphira-logo', 'png'));
+
+    bgColorSelector = createSelect();
+    bgColorSelector.position(10, height + 190);
+    
+    for (let name in bgColors) {
+      bgColorSelector.option(name);
+    }
+    
+    bgColorSelector.changed(() => {
+      let selectedName = bgColorSelector.value();
+      selectedBgColor = bgColors[selectedName];
+    });
+}    
 
 function draw() {
-    background(255);
+    background(selectedBgColor);
+
 
     // Rotation UI updates
     // Convert radians to integer degrees
